@@ -24,6 +24,11 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("Name", "CCannot be the same");
+                return View();
+            }
             if (!ModelState.IsValid)
             {
                 return View(obj);
