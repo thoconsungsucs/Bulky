@@ -26,7 +26,7 @@ namespace BulkyWeb.Controllers
         {
             if (obj.Name == obj.DisplayOrder.ToString())
             {
-                ModelState.AddModelError("Name", "CCannot be the same");
+                ModelState.AddModelError("Name", "Cannot be the same");
                 return View();
             }
             if (!ModelState.IsValid)
@@ -35,6 +35,7 @@ namespace BulkyWeb.Controllers
             }
 
             _db.Categories.Add(obj);
+            TempData["Message"] = "Category Created Successfully";
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -57,6 +58,7 @@ namespace BulkyWeb.Controllers
                 return View(obj);
             }
             _db.Categories.Update(obj);
+            TempData["Message"] = "Category Updated Successfully";
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -81,6 +83,7 @@ namespace BulkyWeb.Controllers
                 return NotFound();
             }
             _db.Categories.Remove(obj);
+            TempData["Message"] = "Category Deleted Successfully";
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
