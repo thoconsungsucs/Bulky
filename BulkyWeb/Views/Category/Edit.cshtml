@@ -1,39 +1,41 @@
 ﻿@model Category
-<form method="post">
-    <div class="border p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary">Edit Category</h2>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <hr />
+
+<div class="card mt-5 shadow border-0 rounded-3">
+
+    <div class="card-header border-0 p-0 rounded-top-3 bg-primary p-4">
+        <div class="text-center align-content-center">
+            <h2 class="text-primary m-0 text-white">Edit Category</h2>
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
         </div>
-
-        <div class="mb-3">
-            <label asp-for="Name" class="form-label"></label>
-            <input asp-for="Name" class="form-control p-2" placeholder="Enter Category Name">
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="DisplayOrder" class="form-label"></label>
-            <input asp-for="DisplayOrder" class="form-control p-2" placeholder="Enter Display Order">
-            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">
-                    Update
-                </button>
-
-            </div>
-            <div class="col-6 col-md-3">
-                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary form-control">Back To List</a>
-            </div>
-        </div>
-
     </div>
-</form>
+    <div class="card-body">
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control p-2" placeholder="Enter Category Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+            <div class="mb-3">
+                <label asp-for="DisplayOrder" class="form-label"></label>
+                <input asp-for="DisplayOrder" class="form-control p-2" placeholder="Enter Display Order">
+                <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6 col-md-4">
+                    <button type="submit" class="btn btn-primary form-control">
+                        Update
+                    </button>
+
+                </div>
+                <div class="col-6 col-md-4">
+                    <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary form-control">Back To List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
