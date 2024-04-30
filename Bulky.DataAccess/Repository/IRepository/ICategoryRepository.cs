@@ -1,10 +1,9 @@
-﻿using Bulky.Models;
+﻿using BulkyBook.Models;
 
-namespace Bulky.DataAccess.Repository
+namespace BulkyBook.DataAccess.Repository.IRepository
 {
     public interface ICategoryRepository : IRepository<Category>
     {
         void Update(Category category);
-        void Save();
     }
 }

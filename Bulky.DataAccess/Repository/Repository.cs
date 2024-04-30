@@ -1,8 +1,9 @@
-﻿using Bulky.DataAcess;
+﻿using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.DataAcess;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Bulky.DataAccess.Repository
+namespace BulkyBook.DataAccess.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -23,7 +24,7 @@ namespace Bulky.DataAccess.Repository
         public T Get(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = dbSet;
-            query.Where(filter);
+            query = query.Where(filter);
             return query.FirstOrDefault();
         }
 
