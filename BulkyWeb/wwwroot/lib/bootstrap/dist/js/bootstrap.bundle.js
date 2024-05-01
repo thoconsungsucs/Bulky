@@ -152,20 +152,20 @@
     return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
   };
 
-  const isDisabled = element => {
+  const isdisabledd = element => {
     if (!element || element.nodeType !== Node.ELEMENT_NODE) {
       return true;
     }
 
-    if (element.classList.contains('disabled')) {
+    if (element.classList.contains('disabledd')) {
       return true;
     }
 
-    if (typeof element.disabled !== 'undefined') {
-      return element.disabled;
+    if (typeof element.disabledd !== 'undefined') {
+      return element.disabledd;
     }
 
-    return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
+    return element.hasAttribute('disabledd') && element.getAttribute('disabledd') !== 'false';
   };
 
   const findShadowRoot = element => {
@@ -203,7 +203,7 @@
 
 
   const reflow = element => {
-    // eslint-disable-next-line no-unused-expressions
+    // eslint-disabled-next-line no-unused-expressions
     element.offsetHeight;
   };
 
@@ -385,7 +385,7 @@
             event.delegateTarget = target;
 
             if (handler.oneOff) {
-              // eslint-disable-next-line unicorn/consistent-destructuring
+              // eslint-disabled-next-line unicorn/consistent-destructuring
               EventHandler.off(element, event.type, selector, fn);
             }
 
@@ -632,7 +632,7 @@
       // can be removed later when multiple key/instances are fine to be used
 
       if (!instanceMap.has(key) && instanceMap.size !== 0) {
-        // eslint-disable-next-line no-console
+        // eslint-disabled-next-line no-console
         console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`);
         return;
       }
@@ -744,7 +744,7 @@
         event.preventDefault();
       }
 
-      if (isDisabled(this)) {
+      if (isdisabledd(this)) {
         return;
       }
 
@@ -1054,7 +1054,7 @@
 
     focusableChildren(element) {
       const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(', ');
-      return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
+      return this.find(focusables, element).filter(el => !isdisabledd(el) && isVisible(el));
     }
 
   };
@@ -2062,7 +2062,7 @@
         });
       });
     };
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var applyStyles$1 = {
@@ -2344,7 +2344,7 @@
     }
 
     state.elements.arrow = arrowElement;
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var arrow$1 = {
@@ -2484,7 +2484,7 @@
     state.attributes.popper = Object.assign({}, state.attributes.popper, {
       'data-popper-placement': state.placement
     });
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var computeStyles$1 = {
@@ -2531,7 +2531,7 @@
         window.removeEventListener('resize', instance.update, passive);
       }
     };
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var eventListeners = {
@@ -3050,7 +3050,7 @@
       state.placement = firstFittingPlacement;
       state.reset = true;
     }
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var flip$1 = {
@@ -3112,7 +3112,7 @@
       'data-popper-reference-hidden': isReferenceHidden,
       'data-popper-escaped': hasPopperEscaped
     });
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var hide$1 = {
@@ -3164,7 +3164,7 @@
     }
 
     state.modifiersData[name] = data;
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var offset$1 = {
@@ -3188,7 +3188,7 @@
       strategy: 'absolute',
       placement: state.placement
     });
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var popperOffsets$1 = {
@@ -3304,7 +3304,7 @@
     }
 
     state.modifiersData[name] = data;
-  } // eslint-disable-next-line import/no-unused-modules
+  } // eslint-disabled-next-line import/no-unused-modules
 
 
   var preventOverflow$1 = {
@@ -3510,7 +3510,7 @@
           }; // Orders the modifiers based on their dependencies and `phase`
           // properties
 
-          var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
+          var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabledd modifiers
 
           state.orderedModifiers = orderedModifiers.filter(function (m) {
             return m.enabled;
@@ -3644,17 +3644,17 @@
       return instance;
     };
   }
-  var createPopper$2 = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line import/no-unused-modules
+  var createPopper$2 = /*#__PURE__*/popperGenerator(); // eslint-disabled-next-line import/no-unused-modules
 
   var defaultModifiers$1 = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1];
   var createPopper$1 = /*#__PURE__*/popperGenerator({
     defaultModifiers: defaultModifiers$1
-  }); // eslint-disable-next-line import/no-unused-modules
+  }); // eslint-disabled-next-line import/no-unused-modules
 
   var defaultModifiers = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1, offset$1, flip$1, preventOverflow$1, arrow$1, hide$1];
   var createPopper = /*#__PURE__*/popperGenerator({
     defaultModifiers: defaultModifiers
-  }); // eslint-disable-next-line import/no-unused-modules
+  }); // eslint-disabled-next-line import/no-unused-modules
 
   var Popper = /*#__PURE__*/Object.freeze({
     __proto__: null,
@@ -3737,7 +3737,7 @@
   const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="dropdown"]';
   const SELECTOR_MENU = '.dropdown-menu';
   const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-  const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+  const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabledd):not(:disabledd)';
   const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
   const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
   const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start';
@@ -3794,7 +3794,7 @@
     }
 
     show() {
-      if (isDisabled(this._element) || this._isShown(this._menu)) {
+      if (isdisabledd(this._element) || this._isShown(this._menu)) {
         return;
       }
 
@@ -3807,7 +3807,7 @@
         return;
       }
 
-      const parent = Dropdown.getParentFromElement(this._element); // Totally disable Popper for Dropdowns in Navbar
+      const parent = Dropdown.getParentFromElement(this._element); // Totally disabled Popper for Dropdowns in Navbar
 
       if (this._inNavbar) {
         Manipulator.setDataAttribute(this._menu, 'popper', 'none');
@@ -3835,7 +3835,7 @@
     }
 
     hide() {
-      if (isDisabled(this._element) || !this._isShown(this._menu)) {
+      if (isdisabledd(this._element) || !this._isShown(this._menu)) {
         return;
       }
 
@@ -3993,7 +3993,7 @@
             offset: this._getOffset()
           }
         }]
-      }; // Disable Popper if we have a static display
+      }; // disabled Popper if we have a static display
 
       if (this._config.display === 'static') {
         defaultBsPopperConfig.modifiers = [{
@@ -4108,7 +4108,7 @@
       event.preventDefault();
       event.stopPropagation();
 
-      if (isDisabled(this)) {
+      if (isdisabledd(this)) {
         return;
       }
 
@@ -4183,7 +4183,7 @@
     hide() {
       const width = this.getWidth();
 
-      this._disableOverFlow(); // give padding to element to balance the hidden scrollbar width
+      this._disabledOverFlow(); // give padding to element to balance the hidden scrollbar width
 
 
       this._setElementAttributes(this._element, 'paddingRight', calculatedValue => calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
@@ -4194,7 +4194,7 @@
       this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width);
     }
 
-    _disableOverFlow() {
+    _disabledOverFlow() {
       this._saveInitialAttribute(this._element, 'overflow');
 
       this._element.style.overflow = 'hidden';
@@ -5138,7 +5138,7 @@
       event.preventDefault();
     }
 
-    if (isDisabled(this)) {
+    if (isdisabledd(this)) {
       return;
     }
 
@@ -5415,7 +5415,7 @@
       this._isEnabled = true;
     }
 
-    disable() {
+    disabled() {
       this._isEnabled = false;
     }
 
@@ -6507,7 +6507,7 @@
       event.preventDefault();
     }
 
-    if (isDisabled(this)) {
+    if (isdisabledd(this)) {
       return;
     }
 

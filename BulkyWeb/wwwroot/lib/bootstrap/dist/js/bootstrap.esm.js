@@ -148,20 +148,20 @@ const isVisible = element => {
   return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
 };
 
-const isDisabled = element => {
+const isdisabledd = element => {
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     return true;
   }
 
-  if (element.classList.contains('disabled')) {
+  if (element.classList.contains('disabledd')) {
     return true;
   }
 
-  if (typeof element.disabled !== 'undefined') {
-    return element.disabled;
+  if (typeof element.disabledd !== 'undefined') {
+    return element.disabledd;
   }
 
-  return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
+  return element.hasAttribute('disabledd') && element.getAttribute('disabledd') !== 'false';
 };
 
 const findShadowRoot = element => {
@@ -199,7 +199,7 @@ const noop = () => {};
 
 
 const reflow = element => {
-  // eslint-disable-next-line no-unused-expressions
+  // eslint-disabled-next-line no-unused-expressions
   element.offsetHeight;
 };
 
@@ -381,7 +381,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
           event.delegateTarget = target;
 
           if (handler.oneOff) {
-            // eslint-disable-next-line unicorn/consistent-destructuring
+            // eslint-disabled-next-line unicorn/consistent-destructuring
             EventHandler.off(element, event.type, selector, fn);
           }
 
@@ -628,7 +628,7 @@ var Data = {
     // can be removed later when multiple key/instances are fine to be used
 
     if (!instanceMap.has(key) && instanceMap.size !== 0) {
-      // eslint-disable-next-line no-console
+      // eslint-disabled-next-line no-console
       console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`);
       return;
     }
@@ -740,7 +740,7 @@ const enableDismissTrigger = (component, method = 'hide') => {
       event.preventDefault();
     }
 
-    if (isDisabled(this)) {
+    if (isdisabledd(this)) {
       return;
     }
 
@@ -1050,7 +1050,7 @@ const SelectorEngine = {
 
   focusableChildren(element) {
     const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(', ');
-    return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
+    return this.find(focusables, element).filter(el => !isdisabledd(el) && isVisible(el));
   }
 
 };
@@ -1957,7 +1957,7 @@ const CLASS_NAME_NAVBAR = 'navbar';
 const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="dropdown"]';
 const SELECTOR_MENU = '.dropdown-menu';
 const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabledd):not(:disabledd)';
 const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
 const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
 const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start';
@@ -2014,7 +2014,7 @@ class Dropdown extends BaseComponent {
   }
 
   show() {
-    if (isDisabled(this._element) || this._isShown(this._menu)) {
+    if (isdisabledd(this._element) || this._isShown(this._menu)) {
       return;
     }
 
@@ -2027,7 +2027,7 @@ class Dropdown extends BaseComponent {
       return;
     }
 
-    const parent = Dropdown.getParentFromElement(this._element); // Totally disable Popper for Dropdowns in Navbar
+    const parent = Dropdown.getParentFromElement(this._element); // Totally disabled Popper for Dropdowns in Navbar
 
     if (this._inNavbar) {
       Manipulator.setDataAttribute(this._menu, 'popper', 'none');
@@ -2055,7 +2055,7 @@ class Dropdown extends BaseComponent {
   }
 
   hide() {
-    if (isDisabled(this._element) || !this._isShown(this._menu)) {
+    if (isdisabledd(this._element) || !this._isShown(this._menu)) {
       return;
     }
 
@@ -2213,7 +2213,7 @@ class Dropdown extends BaseComponent {
           offset: this._getOffset()
         }
       }]
-    }; // Disable Popper if we have a static display
+    }; // disabled Popper if we have a static display
 
     if (this._config.display === 'static') {
       defaultBsPopperConfig.modifiers = [{
@@ -2328,7 +2328,7 @@ class Dropdown extends BaseComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    if (isDisabled(this)) {
+    if (isdisabledd(this)) {
       return;
     }
 
@@ -2403,7 +2403,7 @@ class ScrollBarHelper {
   hide() {
     const width = this.getWidth();
 
-    this._disableOverFlow(); // give padding to element to balance the hidden scrollbar width
+    this._disabledOverFlow(); // give padding to element to balance the hidden scrollbar width
 
 
     this._setElementAttributes(this._element, 'paddingRight', calculatedValue => calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
@@ -2414,7 +2414,7 @@ class ScrollBarHelper {
     this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width);
   }
 
-  _disableOverFlow() {
+  _disabledOverFlow() {
     this._saveInitialAttribute(this._element, 'overflow');
 
     this._element.style.overflow = 'hidden';
@@ -3358,7 +3358,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, functi
     event.preventDefault();
   }
 
-  if (isDisabled(this)) {
+  if (isdisabledd(this)) {
     return;
   }
 
@@ -3635,7 +3635,7 @@ class Tooltip extends BaseComponent {
     this._isEnabled = true;
   }
 
-  disable() {
+  disabled() {
     this._isEnabled = false;
   }
 
@@ -4727,7 +4727,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     event.preventDefault();
   }
 
-  if (isDisabled(this)) {
+  if (isdisabledd(this)) {
     return;
   }
 

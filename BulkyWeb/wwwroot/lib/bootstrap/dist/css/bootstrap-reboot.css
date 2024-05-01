@@ -305,7 +305,7 @@ select {
 select {
   word-wrap: normal;
 }
-select:disabled {
+select:disable {
   opacity: 1;
 }
 
@@ -319,10 +319,10 @@ button,
 [type=submit] {
   -webkit-appearance: button;
 }
-button:not(:disabled),
-[type=button]:not(:disabled),
-[type=reset]:not(:disabled),
-[type=submit]:not(:disabled) {
+button:not(:disable),
+[type=button]:not(:disable),
+[type=reset]:not(:disable),
+[type=submit]:not(:disable) {
   cursor: pointer;
 }
 
