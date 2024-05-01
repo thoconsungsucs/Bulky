@@ -1,8 +1,8 @@
 ﻿using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
+using BulkyBook.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
 namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -19,28 +19,59 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             return View(objProductList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
-            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            ProductVM productVM = new ProductVM()
             {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
-            ViewBag.CategoryList = CategoryList;
-            return View();
+                CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                Product = new Product()
+            };
+            if (id == null || id == 0)
+            {
+                return View(productVM);
+            }
+            else
+            {
+                productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
+                if (productVM.Product == null)
+                {
+                    return NotFound();
+                }
+                return View(productVM);
+            }
         }
         [HttpPost]
-        public IActionResult Create(Product obj)
+        public IActionResult Upsert(int? id, ProductVM productVM, IFormFile? file)
         {
+
             if (!ModelState.IsValid)
             {
-                return View(obj);
+                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+                return View(productVM);
             }
-
-            _unitOfWork.Product.Add(obj);
-            TempData["Message"] = "Product Created Successfully";
-            _unitOfWork.Save();
-            return RedirectToAction("Index");
+            if (id != 0 && id != null)
+            {
+                //Edit Product
+                _unitOfWork.Product.Update(productVM.Product);
+                _unitOfWork.Save();
+                TempData["Message"] = "Product Edited Successfully";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                _unitOfWork.Product.Add(productVM.Product);
+                TempData["Message"] = "Product Created Successfully";
+                _unitOfWork.Save();
+                return RedirectToAction("Index");
+            }
         }
         public IActionResult Edit(int id)
         {
@@ -66,6 +97,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             }
             _unitOfWork.Product.Update(obj);
             _unitOfWork.Save();
+            TempData["Message"] = "Product Edited Successfully";
             return RedirectToAction("Index");
         }
         public IActionResult Delete(int id)
@@ -82,6 +114,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         {
             _unitOfWork.Product.Remove(obj);
             _unitOfWork.Save();
+            TempData["Message"] = "Product Deleted Successfully";
             return RedirectToAction("Index");
         }
     }
