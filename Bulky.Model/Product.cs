@@ -18,19 +18,19 @@ namespace BulkyBook.Models
         public String Author { get; set; }
         [Required]
         [Display(Name = "List Price")]
-        public double ListPrice { get; set; }
+        public double? ListPrice { get; set; }
 
         [Required]
         [Display(Name = "Price 1+")]
-        public double Price { get; set; }
+        public double? Price { get; set; }
 
         [Required]
         [Display(Name = "Price 50+")]
-        public double Price50 { get; set; }
+        public double? Price50 { get; set; }
 
         [Required]
         [Display(Name = "Price 100+")]
-        public double Price100 { get; set; }
+        public double? Price100 { get; set; }
         [Display(Name = "Category ID")]
         [Required]
         public int CategoryId { get; set; }

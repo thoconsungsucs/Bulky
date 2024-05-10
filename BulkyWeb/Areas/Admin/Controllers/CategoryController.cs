@@ -16,26 +16,39 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
-            return View();
+            var category = _unitOfWork.Category.Get(u => u.Id == id);
+            return View(category);
         }
 
         [HttpPost]
-        public IActionResult Create(Category obj)
+        public IActionResult Upsert(int? id, Category obj)
         {
-            if (obj.Name == obj.DisplayOrder.ToString())
+            if (id == 0 || id == null)
             {
-                ModelState.AddModelError("Name", "Cannot be the same");
-                return View();
+                if (obj.Name == obj.DisplayOrder.ToString())
+                {
+                    ModelState.AddModelError("Name", "Cannot be the same");
+                    return View();
+                }
+                if (!ModelState.IsValid)
+                {
+                    return View(obj);
+                }
+
+                _unitOfWork.Category.Add(obj);
+                TempData["Message"] = "Category Created Successfully";
+                _unitOfWork.Save();
+                return RedirectToAction("Index");
             }
+
             if (!ModelState.IsValid)
             {
                 return View(obj);
             }
-
-            _unitOfWork.Category.Add(obj);
-            TempData["Message"] = "Category Created Successfully";
+            _unitOfWork.Category.Update(obj);
+            TempData["Message"] = "Category Updated Successfully";
             _unitOfWork.Save();
             return RedirectToAction("Index");
         }

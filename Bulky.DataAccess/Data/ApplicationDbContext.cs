@@ -32,10 +32,8 @@ namespace BulkyBook.DataAcess
                     Price = 90,
                     Price50 = 85,
                     Price100 = 80,
-                    CategoryId = 1012,
-                    ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/51ZJ2qJ3JNL._SX331_BO1,204,203,200_.jpg"
+                    ImageUrl = ""
                 },
-
                 new Product
                 {
                     Id = 2,
@@ -47,10 +45,8 @@ namespace BulkyBook.DataAcess
                     Price = 30,
                     Price50 = 25,
                     Price100 = 20,
-                    CategoryId = 1009,
-                    ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/51ZJ2qJ3JNL._SX331_BO1,204,203,200_.jpg"
+                    ImageUrl = ""
                 },
-
                 new Product
                 {
                     Id = 3,
@@ -62,10 +58,8 @@ namespace BulkyBook.DataAcess
                     Price = 50,
                     Price50 = 40,
                     Price100 = 35,
-                    CategoryId = 1009,
-                    ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/51ZJ2qJ3JNL._SX331_BO1,204,203,200_.jpg"
+                    ImageUrl = ""
                 },
-
                 new Product
                 {
                     Id = 4,
@@ -77,10 +71,8 @@ namespace BulkyBook.DataAcess
                     Price = 65,
                     Price50 = 60,
                     Price100 = 55,
-                    CategoryId = 1009,
-                    ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/51ZJ2qJ3JNL._SX331_BO1,204,203,200_.jpg"
+                    ImageUrl = ""
                 },
-
                 new Product
                 {
                     Id = 5,
@@ -92,10 +84,8 @@ namespace BulkyBook.DataAcess
                     Price = 27,
                     Price50 = 25,
                     Price100 = 20,
-                    CategoryId = 1011,
-                    ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/51ZJ2qJ3JNL._SX331_BO1,204,203,200_.jpg"
+                    ImageUrl = ""
                 },
-
                 new Product
                 {
                     Id = 6,
@@ -107,8 +97,7 @@ namespace BulkyBook.DataAcess
                     Price = 23,
                     Price50 = 22,
                     Price100 = 20,
-                    CategoryId = 1012,
-                    ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/51ZJ2qJ3JNL._SX331_BO1,204,203,200_.jpg"
+                    ImageUrl = ""
                 });
         }
     }
