@@ -1,0 +1,65 @@
+﻿@model Company
+
+<div class="card mt-5 shadow border-0 rounded-3">
+
+    <div class="card-header border-0 p-0 rounded-top-3 bg-primary p-4">
+        <div class="text-center align-content-center">
+            <h2 class="text-primary m-0 text-white">@(Model.Id != 0 ? "Edit" : "Create") Company</h2>
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+        </div>
+    </div>
+    <div class="card-body row">
+        <div class="col-10">
+
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control p-2" placeholder="Enter Company Title">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="StreetAddress" class="form-label"></label>
+                    <input asp-for="StreetAddress" class="form-control p-2" placeholder="Enter Author">
+                    <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="City" class="form-label"></label>
+                    <input asp-for="City" class="form-control p-2" placeholder="Enter ISBN">
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="State" class="form-label"></label>
+                    <input asp-for="State" class="form-control p-2" placeholder="Enter ISBN">
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+               
+                <div class="mb-3">
+                    <label asp-for="PostalCode" class="form-label"></label>
+                    <input asp-for="PostalCode" class="form-control p-2" placeholder="Enter Price">
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+
+
+                <div class="row mt-4">
+                    <div class="col-6 col-md-4">
+                        <button type="submit" class="btn btn-primary form-control">
+                            @(Model.Id != 0 ? "Edit" : "Create")
+                        </button>
+
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <a asp-controller="Company" asp-action="Index" class="btn btn-outline-secondary form-control">Back To List</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
