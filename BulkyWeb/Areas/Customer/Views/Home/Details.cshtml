@@ -1,11 +1,12 @@
-﻿@model Product
+﻿@model ShoppingCart
 <form method="post">
     <div class="card shadow border-0 mt-4 rounded-2">
+        <input hidden asp-for="@Model.ProductId" />
         <div class="card-header bg-primary text-light py-4 rounded-top-2">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="text-uppercase">@Model.Title</h2>
-                    <h3 class="fw-semibold mb-0">by @Model.Author</h3>
+                    <h2 class="text-uppercase">@Model.Product.Title</h2>
+                    <h3 class="fw-semibold mb-0">by @Model.Product.Author</h3>
                 </div>
             </div>
         </div>
@@ -20,21 +21,21 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-3 offset-lg-1 text-center mb-3">
-                        <img src="@Model.ImageUrl" width="100%" class="rounded" />
+                        <img src="@Model.Product.ImageUrl" width="100%" class="rounded" />
                     </div>
                     <div class="col-12 col-lg-5 offset-lg-1">
                         <div class="p-2 border mb-3 border-2 rounded-2">
                             <div class="col-12 col-md-6 pb-4">
-                                <span class="text-dark fw-bold">@Model.Category.Name</span>
+                                <span class="text-dark fw-bold">@Model.Product.Category.Name</span>
                             </div>
                             <div class="row ps-2">
-                                <h5 class="text-dark text-opacity-50 ">ISBN : @Model.ISBN</h5>
+                                <h5 class="text-dark text-opacity-50 ">ISBN : @Model.Product.ISBN</h5>
                             </div>
                             <div class="row ps-2">
                                 <h5 class="text-dark text-opacity-50 pb-2">
                                     List Price:
                                     <span class="text-decoration-line-through">
-                                        @Model.ListPrice
+                                        @Model.Product.ListPrice
                                     </span>
                                 </h5>
                             </div>
@@ -57,18 +58,18 @@
                                     <div>Price</div>
                                 </div>
                                 <div class="p-1 col-3 col-lg-2 bg-white text-warning fw-bold">
-                                    <div>@Model.Price</div>
+                                    <div>@Model.Product.Price</div>
                                 </div>
                                 <div class="p-1 col-3 col-lg-2 bg-white text-warning fw-bold">
-                                    <div>@Model.Price50</div>
+                                    <div>@Model.Product.Price50</div>
                                 </div>
                                 <div class="p-1 col-3 col-lg-2 bg-white text-warning fw-bold">
-                                    <div>@Model.Price100</div>
+                                    <div>@Model.Product.Price100</div>
                                 </div>
                             </div>
 
                             <div class="row pl-2">
-                                <p class="text-secondary p-0">@Html.Raw(Model.Description)</p>
+                                <p class="text-secondary p-0">@Html.Raw(Model.Product.Description)</p>
                             </div>
                         </div>
                         <div class="row pl-2 mb-2">
@@ -78,16 +79,16 @@
                                           id="inputGroup-sizing-default">
                                         Count
                                     </span>
-                                    <input type="number" value="1" class="form-control text-end rounded-2"
+                                    <input asp-for="Count" type="number" value="1" class="form-control text-end rounded-2"
                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 pb-1">
-                                <button type="submit" disabled
+                                <button type="submit" 
                                         class="btn btn-primary w-100 py-2 text-uppercase fw-semibold rounded-2">
-                                    Add to Cart (Comming Soon...)
+                                    Add to Cart
                                 </button>
                             </div>
                         </div>

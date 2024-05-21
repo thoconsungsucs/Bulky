@@ -16,6 +16,7 @@ namespace BulkyBook.DataAcess
         public DbSet<Product> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -105,6 +106,37 @@ namespace BulkyBook.DataAcess
                 }
             );
 
+            modelBuilder.Entity<Company>().HasData(
+                new Company
+                {
+                    Id = 1,
+                    Name = "Tech Solution",
+                    StreetAddress = "123 Main St",
+                    City = "New York",
+                    State = "NY",
+                    PostalCode = "10000",
+                    PhoneNumber = "1234567890",
+                },
+                new Company
+                {
+                    Id = 2,
+                    Name = "Vivid Books",
+                    StreetAddress = "456 Main St",
+                    City = "New York",
+                    State = "NY",
+                    PostalCode = "10000",
+                    PhoneNumber = "1234567890",
+                },
+                new Company
+                {
+                    Id = 3,
+                    Name = "Readers Club",
+                    StreetAddress = "789 Main St",
+                    City = "New York",
+                    State = "NY",
+                    PostalCode = "10000",
+                    PhoneNumber = "1234567890",
+                });
         }
     }
 
