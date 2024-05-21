@@ -50,9 +50,14 @@ namespace BulkyBook.DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll(string? includeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+            if (filter != null)
+            {
+                dbSet.Where(filter);
+            }
+
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
