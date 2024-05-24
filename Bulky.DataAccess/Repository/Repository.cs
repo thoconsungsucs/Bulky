@@ -26,7 +26,7 @@ namespace BulkyBook.DataAccess.Repository
             dbSet.AddRange(entities);
         }
 
-        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true)
         {
             IQueryable<T> query;
             if (!tracked)
@@ -55,7 +55,7 @@ namespace BulkyBook.DataAccess.Repository
             IQueryable<T> query = dbSet;
             if (filter != null)
             {
-                dbSet.Where(filter);
+                query = dbSet.Where(filter);
             }
 
             if (!string.IsNullOrEmpty(includeProperties))

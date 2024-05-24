@@ -12,7 +12,10 @@ namespace BulkyBook.DataAccess.Repository
             _db = db;
         }
 
-
+        public void Attach(ApplicationUser applicationUser)
+        {
+            var state = _db.Entry(applicationUser).State.ToString();
+        }
 
     }
 }
